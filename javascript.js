@@ -4,6 +4,7 @@ let operator = "";
 let num1 = 0;
 let num2 = 0;
 let solution = 0;
+let shiftPress = false;
 
 
 const screen = document.getElementById("screen");
@@ -12,6 +13,20 @@ const operatorButtons = document.querySelectorAll('[data-operator]');
 const clearBtn = document.getElementById("clear");
 const deleteBtn = document.getElementById("delete");
 const equalsBtn = document.getElementById("equals");
+
+document.addEventListener("keydown", (e) => {
+    if (e.code === "ShiftLeft" || e.code === "ShiftRight") {
+        shiftPress = true;
+        console.log(shiftPress);
+    }
+});
+
+document.addEventListener("keyup", (e) => {
+    if (e.code === "ShiftLeft" || e.code === "ShiftRight") {
+        shiftPress = false;
+        console.log(shiftPress);
+    }
+});
 
 const addition = function (num1, num2) {
     let total = num1 + num2;
@@ -73,6 +88,57 @@ numberButtons.forEach((button) => {
     })
 });
 
+document.addEventListener('keydown', (e) => {
+    console.log(e.code);
+    if (e.code === "Digit1" || e.code === "Numpad1") {
+        e.preventDefault();
+        document.getElementById("one").click();
+    } else if (e.code === "Digit2" || e.code === "Numpad2") {
+        e.preventDefault();
+        document.getElementById("two").click();
+    } else if (e.code === "Digit3" || e.code === "Numpad3") {
+        e.preventDefault();
+        document.getElementById("three").click();
+    } else if (e.code === "Digit4" || e.code === "Numpad4") {
+        e.preventDefault();
+        document.getElementById("four").click();
+    } else if (e.code === "Digit5" || e.code === "Numpad5") {
+        e.preventDefault();
+        document.getElementById("five").click();
+    } else if (e.code === "Digit6" || e.code === "Numpad6") {
+        e.preventDefault();
+        document.getElementById("six").click();
+    } else if (e.code === "Digit7" || e.code === "Numpad7") {
+        e.preventDefault();
+        document.getElementById("seven").click();
+    } else if (e.code === "Digit8" || e.code === "Numpad8") {
+        e.preventDefault();
+        document.getElementById("eight").click();
+    } else if (e.code === "Digit9" || e.code === "Numpad9") {
+        e.preventDefault();
+        document.getElementById("nine").click();
+    } else if (e.code === "Digit0" || e.code === "Numpad0") {
+        e.preventDefault();
+        document.getElementById("zero").click();
+    } else if (e.code === "NumpadAdd") {
+        e.preventDefault();
+        document.getElementById("add").click();
+    } else if (e.code === "Enter" || e.code === "NumpadEnter" || e.code === "Equals") {
+        e.preventDefault();
+        document.getElementById("equals").click();
+    } else if (e.code === "NumpadDivide") {
+        e.preventDefault();
+        document.getElementById("divide").click();
+    } else if (e.code === "NumpadMultiply") {
+        e.preventDefault();
+        document.getElementById("multiply").click();
+    } else if (e.code === "NumpadSubtract" || e.code === "Minus") {
+        e.preventDefault();
+        document.getElementById("subtract").click();
+    }
+});
+
+
 operatorButtons.forEach((button) => {
     button.addEventListener('click', (e) => {
         if (operator === "+" || operator === "-" || operator === "X" || operator === "/") {
@@ -126,3 +192,4 @@ const del = function (string) {
 deleteBtn.addEventListener('click', (e) => {
     del(output);
 });
+

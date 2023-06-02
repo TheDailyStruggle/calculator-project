@@ -22,7 +22,10 @@ body {
     align-items: center;
     justify-content: center;
     border-radius: 20px;
-    border: 1px solid red;
+    padding: 20px;
+    border: 3px solid black;
+    background-color: rgb(94, 94, 94);
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.603);
 }
 
 #topRow {
@@ -41,19 +44,52 @@ body {
 .btn {
     display: flex;
     justify-content: space-around;
-    width: 60px;
+    width: 65px;
     height: 50px;
     margin: 10px;
     align-items: center;
     justify-content: center;
     font-size: 18px;
+    border: 2px black solid;
+    border-radius: 5px;
 }
 
 .doubleBtn {
-    width: 75px;
+    width: 100px;
     font-size: 15px;
 }
 
-.screen {
+.btn:active {
+    background-color: rgb(214, 214, 214);
+    box-shadow: inset 1px 1px 1px black;
+}
+
+#screen {
     text-align: right;
+    width: 100%;
+    height: 80px;
+    border: 3px black solid;
+    border-radius: 10px;
+    padding: auto;
+    padding-right: 10px;
+    margin: 10px;
+    line-height: 80px;
+    font-size: 2em;
+    background-color: rgb(236, 236, 236);
+}
+
+#clear {
+    background-color: rgb(241, 133, 133);
+}
+
+#clear:active {
+    background-color: rgb(241, 110, 110);
+}
+
+#delete {
+    background-color: rgb(133, 140, 241);
+}
+
+#delete:active {
+    background-color: rgb(107, 116, 241);
 }
