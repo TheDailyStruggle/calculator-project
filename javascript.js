@@ -227,3 +227,7 @@ deleteBtn.addEventListener('click', (e) => {
 document.addEventListener('keypress', (e) => {
     console.log(e.key);
 })
+
+
+let date = new Date().getFullYear();
+document.getElementById("year").textContent = date;

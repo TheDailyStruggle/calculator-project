@@ -10,7 +10,7 @@ body {
 .wrapper {
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 90vh;
     min-height: 500px;
     background-color: gainsboro;
     display: flex;
@@ -115,4 +115,25 @@ body {
 
 #delete:active {
     background-color: rgb(107, 116, 241);
+}
+
+footer {
+    background-color: darkblue;
+    margin: 0;
+    padding: 0;
+    height: 10vh;
+    text-align: center;
+    color: white;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+    line-height: 10vh;
+}
+
+#logo {
+    width: 25px;
+    height: 25px;
+    margin: 0 10px;
 }
