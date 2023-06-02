@@ -5,15 +5,27 @@
 
 body {
     margin: 0;
+    width: 100%;
 }
 
 .wrapper {
     align-items: center;
     justify-content: center;
-    height: 90vh;
+    height: 100vh;
     min-height: 500px;
     background-color: gainsboro;
     display: flex;
+    flex-direction: column;
+    width: 100%;
+
+}
+
+.calcWrapper {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #calcBody {
@@ -123,7 +135,10 @@ footer {
     padding: 0;
     height: 10vh;
     text-align: center;
-    color: white;
+    color: rgb(255, 255, 255);
+    width: 100%;
+    position: absolute;
+    bottom: 0;
 }
 
 p {
@@ -136,4 +151,24 @@ p {
     width: 25px;
     height: 25px;
     margin: 0 10px;
+}
+
+@media (max-width: 400px) {
+
+
+    calcBody {
+        width: 380px;
+    }
+
+    .btn {
+        margin: 10px 3px;
+    }
+
+    footer {
+        height: 100px;
+    }
+
+    p {
+        line-height: 50px;
+    }
 }
