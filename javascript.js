@@ -1,8 +1,9 @@
 let output = "";
 let equation = [];
 let operator = "";
-let num1 = 1;
-let num2 = 1;
+let num1 = 0;
+let num2 = 0;
+let solution = 0;
 
 
 const screen = document.getElementById("screen");
@@ -33,31 +34,17 @@ const divide = function (num1, num2) {
 };
 
 const operate = function (operator, num1, num2) {
-    // num1 = parseInt(numA);
-    // num2 = parseInt(numB);
-    console.log(num1);
-    console.log(num2);
     if (operator === "+") {
         solution = addition(num1, num2);
-        screen.textContent = solution;
-        return solution;
     } else if (operator === "-") {
         solution = subtraction(num1, num2);
-        screen.textContent = solution;
-        return solution;
     } else if (operator === "X") {
         solution = multiply(num1, num2);
-        screen.textContent = solution;
-        return solution;
     } else if (operator === "/") {
         solution = divide(num1, num2);
-        screen.textContent = solution;
-        return solution;
-    } else {
-        solution = "ERROR";
-        screen.textContent = solution;
     }
-
+    output = solution;
+    screen.textContent = output;
 };
 
 
@@ -70,6 +57,7 @@ clearBtn.addEventListener('click', () => {
     equalsBtn.disabled = true;
     num1 = 1;
     num2 = 1;
+    output = 1;
 });
 
 
@@ -88,11 +76,20 @@ numberButtons.forEach((button) => {
 operatorButtons.forEach((button) => {
     button.addEventListener('click', (e) => {
         if (operator === "+" || operator === "-" || operator === "X" || operator === "/") {
-            operator = button.textContent;
-            equation.pop();
-            equation.push(operator);
-            screen.textContent = operator;
-            equalsBtn.disabled = false;
+            if (equation.length = 3) {
+                equals();
+                equation = [];
+                operator = button.textContent;
+                screen.textContent = operator
+                equation.push(solution);
+                equation.push(operator);
+            } else {
+                operator = button.textContent;
+                equation.pop();
+                equation.push(operator);
+                screen.textContent = operator;
+                equalsBtn.disabled = false;
+            }
         }
         else {
             operator = button.textContent;
@@ -104,6 +101,7 @@ operatorButtons.forEach((button) => {
     })
 });
 
+//Equals Section
 
 equalsBtn.disabled = true;
 
@@ -114,9 +112,17 @@ equalsBtn.addEventListener('click', (e) => {
 
 const equals = function () {
     equation.push(output);
-    console.log(equation);
     num1 = parseInt(equation[0]);
     num2 = parseInt(equation[2]);
     operate(operator, num1, num2);
-    console.log(solution);
 };
+
+// Delete Key
+const del = function (string) {
+    output = string.slice(0, -1);
+    screen.textContent = output;
+};
+
+deleteBtn.addEventListener('click', (e) => {
+    del(output);
+});
