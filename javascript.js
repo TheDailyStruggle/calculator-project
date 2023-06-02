@@ -3,7 +3,7 @@ let equation = [];
 let operator = "";
 let num1 = 0;
 let num2 = 0;
-let solution = 0;
+let solution = "";
 let shiftPress = false;
 
 
@@ -65,23 +65,34 @@ const operate = function (operator, num1, num2) {
 
 // Clear button function
 
-clearBtn.addEventListener('click', () => {
+const clear = function () {
     screen.textContent = "0";
     operator = "";
     equation = [];
     equalsBtn.disabled = true;
-    num1 = 1;
-    num2 = 1;
+    num1 = 0;
+    num2 = 0;
     output = 1;
-});
+    solution = "";
+};
 
+clearBtn.addEventListener('click', () => {
+    clear();
+});
 
 numberButtons.forEach((button) => {
     button.addEventListener('click', (e) => {
-        if (screen.textContent === "0" || screen.textContent === "/" || screen.textContent === "X" || screen.textContent === "+" || screen.textContent === "-") {
+        if (equation.length === 3) {
+            clear();
             output = button.innerText;
             screen.textContent = output;
-        } else {
+        } else if (screen.textContent === "0" || screen.textContent === "You Can't Do That!"
+            || screen.textContent === "/" || screen.textContent === "X" || screen.textContent === "+"
+            || screen.textContent === "-") {
+            output = button.innerText;
+            screen.textContent = output;
+        }
+        else {
             output = output + button.innerText;
             screen.textContent = output;
         }
@@ -180,6 +191,17 @@ const equals = function () {
     equation.push(output);
     num1 = parseInt(equation[0]);
     num2 = parseInt(equation[2]);
+    if (operator === "/" && num2 === 0) {
+        screen.textContent = "You Can't Do That!"
+        operator = "";
+        equation = [];
+        equalsBtn.disabled = true;
+        num1 = 0;
+        num2 = 0;
+        output = 1;
+        solution = ""
+        return
+    }
     operate(operator, num1, num2);
 };
 
