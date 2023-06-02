@@ -20,14 +20,6 @@ body {
 
 }
 
-.calcWrapper {
-    width: 100%;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 #calcBody {
     display: flex;
     width: 400px;
@@ -153,10 +145,9 @@ p {
     margin: 0 10px;
 }
 
-@media (max-width: 400px) {
+@media screen and (max-width: 438px) {
 
-
-    calcBody {
+    #calcBody {
         width: 380px;
     }
 
