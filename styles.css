@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
 }
 
 body {
@@ -30,8 +31,6 @@ body {
 
 #topRow {
     display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 #mainButtons {
@@ -44,12 +43,13 @@ body {
 .btn {
     display: flex;
     justify-content: space-around;
-    width: 65px;
-    height: 50px;
-    margin: 10px;
+    width: 75px;
+    height: 60px;
+    margin: 5px;
     align-items: center;
     justify-content: center;
-    font-size: 18px;
+    font-size: 22px;
+    font-weight: normal;
     border: 2px black solid;
     border-radius: 5px;
 }
@@ -57,12 +57,12 @@ body {
 :disabled {
     display: flex;
     justify-content: space-around;
-    width: 65px;
-    height: 50px;
-    margin: 10px;
+    width: 75px;
+    height: 60px;
+    margin: 5px;
     align-items: center;
     justify-content: center;
-    font-size: 18px;
+    font-size: 22px;
     border: 2px black solid;
     border-radius: 5px;
     background-color: white;
@@ -75,8 +75,9 @@ body {
 }
 
 .doubleBtn {
-    width: 100px;
-    font-size: 15px;
+    width: 120px;
+    font-size: 20px;
+    font-weight: normal;
 }
 
 .btn:active {

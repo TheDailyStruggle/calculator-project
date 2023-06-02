@@ -4,7 +4,6 @@ let operator = "";
 let num1 = 0;
 let num2 = 0;
 let solution = "";
-let shiftPress = false;
 
 
 const screen = document.getElementById("screen");
@@ -13,20 +12,7 @@ const operatorButtons = document.querySelectorAll('[data-operator]');
 const clearBtn = document.getElementById("clear");
 const deleteBtn = document.getElementById("delete");
 const equalsBtn = document.getElementById("equals");
-
-document.addEventListener("keydown", (e) => {
-    if (e.code === "ShiftLeft" || e.code === "ShiftRight") {
-        shiftPress = true;
-        console.log(shiftPress);
-    }
-});
-
-document.addEventListener("keyup", (e) => {
-    if (e.code === "ShiftLeft" || e.code === "ShiftRight") {
-        shiftPress = false;
-        console.log(shiftPress);
-    }
-});
+const decimal = document.getElementById("decimal");
 
 const addition = function (num1, num2) {
     let total = num1 + num2;
@@ -58,7 +44,8 @@ const operate = function (operator, num1, num2) {
     } else if (operator === "/") {
         solution = divide(num1, num2);
     }
-    output = solution;
+    output = Math.round(solution * 10000) / 10000;
+    output.toString();
     screen.textContent = output;
 };
 
@@ -72,7 +59,7 @@ const clear = function () {
     equalsBtn.disabled = true;
     num1 = 0;
     num2 = 0;
-    output = 1;
+    output = "";
     solution = "";
 };
 
@@ -97,6 +84,25 @@ numberButtons.forEach((button) => {
             screen.textContent = output;
         }
     })
+});
+
+decimal.addEventListener('click', (button) => {
+    if (output.includes(".")) {
+        return
+    } else if (equation.length === 3) {
+        clear();
+        output = "0" + ".";
+        screen.textContent = output;
+    } else if (screen.textContent === "0" || screen.textContent === "You Can't Do That!"
+        || screen.textContent === "/" || screen.textContent === "X" || screen.textContent === "+"
+        || screen.textContent === "-") {
+        output = "0" + ".";
+        screen.textContent = output;
+    }
+    else {
+        output = output + ".";
+        screen.textContent = output;
+    }
 });
 
 document.addEventListener('keydown', (e) => {
@@ -146,6 +152,9 @@ document.addEventListener('keydown', (e) => {
     } else if (e.code === "NumpadSubtract" || e.code === "Minus") {
         e.preventDefault();
         document.getElementById("subtract").click();
+    } else if (e.code === "NumpadDecimal" || e.code === "Period") {
+        e.preventDefault();
+        document.getElementById("decimal").click();
     }
 });
 
@@ -189,8 +198,8 @@ equalsBtn.addEventListener('click', (e) => {
 
 const equals = function () {
     equation.push(output);
-    num1 = parseInt(equation[0]);
-    num2 = parseInt(equation[2]);
+    num1 = parseFloat(equation[0]);
+    num2 = parseFloat(equation[2]);
     if (operator === "/" && num2 === 0) {
         screen.textContent = "You Can't Do That!"
         operator = "";
@@ -198,7 +207,7 @@ const equals = function () {
         equalsBtn.disabled = true;
         num1 = 0;
         num2 = 0;
-        output = 1;
+        output = "";
         solution = ""
         return
     }
@@ -215,3 +224,6 @@ deleteBtn.addEventListener('click', (e) => {
     del(output);
 });
 
+document.addEventListener('keypress', (e) => {
+    console.log(e.key);
+})
