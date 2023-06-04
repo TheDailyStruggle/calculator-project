@@ -46,7 +46,9 @@ const operate = function (operator, num1, num2) {
     }
     output = Math.round(solution * 10000) / 10000;
     output.toString();
+    solution = output;
     screen.textContent = output;
+    console.log(`operate solution = ${solution}`);
 };
 
 
@@ -78,8 +80,7 @@ numberButtons.forEach((button) => {
             || screen.textContent === "-") {
             output = button.innerText;
             screen.textContent = output;
-        }
-        else {
+        } else {
             output = output + button.innerText;
             screen.textContent = output;
         }
@@ -106,7 +107,6 @@ decimal.addEventListener('click', (button) => {
 });
 
 document.addEventListener('keydown', (e) => {
-    console.log(e.code);
     if (e.code === "Digit1" || e.code === "Numpad1") {
         e.preventDefault();
         document.getElementById("one").click();
@@ -162,12 +162,12 @@ document.addEventListener('keydown', (e) => {
 operatorButtons.forEach((button) => {
     button.addEventListener('click', (e) => {
         if (operator === "+" || operator === "-" || operator === "X" || operator === "/") {
-            if (equation.length = 3) {
+            if (equation.length = 2) {
                 equals();
                 equation = [];
+                equation.push(output);
                 operator = button.textContent;
-                screen.textContent = operator
-                equation.push(solution);
+                screen.textContent = operator;
                 equation.push(operator);
             } else {
                 operator = button.textContent;
@@ -210,6 +210,7 @@ const equals = function () {
         output = "";
         solution = ""
         return
+
     }
     operate(operator, num1, num2);
 };
